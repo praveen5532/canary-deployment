@@ -1,7 +1,10 @@
 replicas: 1
 image:
   repository: argoproj/rollouts-demo
-  tag: blue
+  pullPolicy: Always
+  # pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "blue"
 prometheus:
   enabled: true
   address: http://prometheus-operated.prometheus.svc.cluster.local:9090
