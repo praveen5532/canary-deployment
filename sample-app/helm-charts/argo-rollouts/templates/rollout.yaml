@@ -25,13 +25,14 @@ spec:
             canary-by-header: X-Canary
       steps:
         - setWeight: 25
-        - pause: {}
+        - pause: 
+            duration: 1m
         - setWeight: 50
         - pause:
-            duration: 5m
+            duration: 1m
         - setWeight: 75
         - pause:
-            duration: 5m
+            duration: 1m
       {{- if .Values.prometheus.enabled }}
       analysis:
         templates:
