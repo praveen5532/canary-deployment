@@ -4,7 +4,7 @@ image:
   pullPolicy: Always
   # pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "orange"
+  tag: "blue"
 prometheus:
   enabled: true
   address: http://prometheus-operated.prometheus.svc.cluster.local:9090
