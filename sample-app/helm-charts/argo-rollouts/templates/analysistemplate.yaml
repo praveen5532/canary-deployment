@@ -15,14 +15,14 @@ spec:
         prometheus:
           address: {{ .Values.prometheus.address }}
           query: |
-            sum(rate(
-              sample_app_requests_count{service="{{ .Release.Name }}-canary", success="true"}[1m])
-            ) by (service)
-            /
-            sum(rate(
-              sample_app_requests_count{service="{{ .Release.Name }}-canary"}[1m])
-            ) by (service)
-            unless sum(rate(
-              sample_app_requests_count{service="{{ .Release.Name }}-canary"}[1m])
-            ) by (service) == 0
-{{- end }}
+             sum(irate(
+
+            nginx_ingress_controller_nginx_process_requests_total{reporter="source",destination_service="test",response_code!"5.*"}[1m]
+
+           )) / 
+
+           sum(irate(
+
+             nginx_ingress_controller_nginx_process_requests_total{reporter="source",destination_service=~"test"}[1m]
+
+           ))
