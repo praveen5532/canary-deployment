@@ -16,13 +16,8 @@ spec:
           address: {{ .Values.prometheus.address }}
           query: |
              sum(irate(
-
             nginx_ingress_controller_nginx_process_requests_total{reporter="source",destination_service="test",response_code!"5.*"}[1m]
-
            )) / 
-
            sum(irate(
-
              nginx_ingress_controller_nginx_process_requests_total{reporter="source",destination_service=~"test"}[1m]
-
            ))
